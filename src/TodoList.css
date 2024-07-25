@@ -1,0 +1,45 @@
+/* body{
+    background-color: #2C2D2D;
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.mainContainer{
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    background-color: #2C2D2D;
+    text-align: center;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 50px;
+}
+.mainContainer-head{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+}
+.addTodo{
+    width: 100px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 17px;
+    color: white;
+    background-color: green;
+    padding-top: 7px;
+}
+.mainContainer-headTitle{
+    font-size: 25px;
+}
+.containerTable{
+    border: 1px solid black;
+    width: 800px;
+}
