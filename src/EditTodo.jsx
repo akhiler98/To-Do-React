@@ -1,25 +1,33 @@
 import React from 'react'
-import "./AddTodo.css";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
-// import { useContext } from 'react';
-// import TodolistContext from './TodolistContext';
+import { useEffect } from 'react';
 
 
-function AddTodo() {
+function EditTodo() {
     const[errors,setErrors] = useState([])
     const [values, setValues] = useState({
         name: '',
         description: '',
         days: ''
     })
+    // console.log(values);
 
-    // const {todoLists,lists} = useContext(TodolistContext);
-
+    let {id} = useParams();
     const navigate = useNavigate();
 
 
+    const findTodo = async () => {
+        const response = await fetch(`http://www.todo.test/api/edittodo/${id}`);
+        const data = await response.json();
+        setValues(data)
+        // console.log(data);
+    }
+
+    useEffect(() => {
+        findTodo()
+    }, []);
 
     const handleChange = (event)=>{
         setValues(current_values => {
@@ -29,17 +37,16 @@ function AddTodo() {
         });
     }
 
-    const handleSubmit = async (event) => {
+    const updateTodo = async (event) => {
         event.preventDefault();
         
         try {
             
-            const response = await axios.post('http://www.todo.test/api/createtodo', values);
+            const response = await axios.post(`http://www.todo.test/api/updatetodo/${id}`, values);
             const response_data = response.data;
             navigate('/')
             console.log(response_data);
         } catch (error) {
-            console.log(error);
         
             switch (error.response.status) {
                 case 422:
@@ -47,10 +54,6 @@ function AddTodo() {
                     console.log('VALIDATION FAILED:', error.response.data.errors);
                     setErrors(error.response.data.errors)
                     break;
-                case 400:
-                    console.log('message:', error.response.data);
-                    break;
-
                 case 500:
                     console.log('UNKNOWN ERROR', error.response.data);
                     break;
@@ -58,20 +61,19 @@ function AddTodo() {
         }
     }
 
-
   return (
     <div className='addtodoContainer'>
         <div className='addtodoContainer-head'>
-          <h3>CREATE TODO</h3>
+          <h3>EDIT TODO</h3>
           <Link className="createtodo" to={"/"}>BACK</Link>
 
         </div>
         <div className='addtodoContainer-content'>
-            <form className='addContainer-form' action="" method='post' onSubmit={handleSubmit}>
+            <form className='addContainer-form' action="" method='post' onSubmit={updateTodo}>
                 <input className='form-input' type="text" name='name' value={values.name} onChange={handleChange} placeholder='Name'/> <br /><br />
                 <input className='form-input' type="text" name='description' value={values.description} onChange={handleChange} placeholder='Description(optional)'/> <br /><br />
                 <input className='form-input' type="number" name='days' value={values.days} onChange={handleChange} placeholder='Days'/> <br /><br />
-                <button>Add Todo</button>
+                <button>UPDATE Todo</button>
 
             </form>
 
@@ -81,4 +83,4 @@ function AddTodo() {
   )
 }
 
-export default AddTodo
+export default EditTodo
