@@ -16,20 +16,20 @@ function App() {
     const data = await response.json();
     setLists(data)
     console.log(data);
-}
+  }
 
   return (
     <>
-    <TodolistContext.Provider value={{todoLists,lists}}>
-      <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<TodoList />} />
-              <Route path="/addtodo" element={<AddTodo />} /> 
-              <Route path="/edittodo/:id" element={<EditTodo />} /> 
-            </Routes>
-                    
-       </BrowserRouter>
-    </TodolistContext.Provider>
+      <TodolistContext.Provider value={{ todoLists, lists }}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<TodoList />} />
+            <Route path="/addtodo" element={<AddTodo />} />
+            <Route path="/edittodo/:id" element={<EditTodo />} />
+          </Routes>
+
+        </BrowserRouter>
+      </TodolistContext.Provider>
     </>
   )
 }

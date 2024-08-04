@@ -6,13 +6,19 @@
     flex-direction: column;
     align-items: center;
     
-
+    
 }
 .addtodoContainer-head{
     width: 80%;
     display: flex;
     justify-content: space-between;
     font-size: 15PX;
+}
+
+.addtodoContainer-headTitle{
+    margin-left: 325px;
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
 }
 .createtodo{
     width: 100px;
@@ -31,9 +37,34 @@
     
 }
 .addContainer-form{
-    width: 100%;
+    width: 80%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 50px;
+   
 }
 .form-input{
     width: 80%;
-    height: 30px;
+    height: 35px;
+}
+.addtodoButton{
+    width: 100px;
+    background-color: green;
+    height: 25px;
+    cursor: pointer;
+}
+.inputContainer{
+    position: relative;
+}
+.displayError{
+    position: absolute;
+    color: red;
+}
+.displayMessage{
+    position: absolute;
+    color: red;
+    top: 120px;
+    left: 190px;
 }

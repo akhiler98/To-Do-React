@@ -9,9 +9,9 @@
 }
 .mainContainer{
     width: 100vw;
-    height: 100vh;
-    color: white;
-    background-color: #2C2D2D;
+    height: 100%;
+    color: black;
+    background-color: white;
     text-align: center;
     padding-top: 50px;
     display: flex;
@@ -24,7 +24,7 @@
     width: 80%;
     display: flex;
     justify-content: space-between;
-    color: white;
+    color: black;
     align-items: center;
 }
 .addTodo{
@@ -38,8 +38,50 @@
 }
 .mainContainer-headTitle{
     font-size: 25px;
+    
 }
 .containerTable{
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-collapse: collapse;
     width: 800px;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
 }
+.containerTable th, .containerTable td {
+    padding: 12px 15px;
+    border: 1px solid #080808;
+}
+.containerTable td{
+  color: gray;
+}
+
+.containerTable td:nth-child(5) {
+    
+}
+.actionButton{
+    width: 50px;
+    cursor: pointer;
+    
+}
+.actionButton:hover{
+   opacity: 0.5;
+}
+.actionButton-delete{
+    background-color: red;
+}
+.actionButton-edit{
+    background-color: blue;
+}
+.editTodo{
+    text-decoration: none;
+    color: #080808;
+}
+
+.displayCheckbox-error{
+    position: absolute;
+    top: 190px;
+    color: red;
+}
+
+
